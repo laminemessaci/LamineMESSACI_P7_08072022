@@ -1,0 +1,31 @@
+{
+  "name": "laminemessaci_p7_08072022",
+  "version": "1.0.0",
+  "description": "recipes filter",
+  "main": "index.html",
+  "scripts": {
+    "test": "test",
+     "sass": "sass --watch ./sass/main.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laminemessaci/LamineMESSACI_P7_08072022.git"
+  },
+  "keywords": [
+    "filter",
+    "recipes"
+  ],
+  "author": "lamine messaci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laminemessaci/LamineMESSACI_P7_08072022/issues"
+  },
+  "homepage": "https://github.com/laminemessaci/LamineMESSACI_P7_08072022#readme",
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "prettier": "^2.7.1"
+  }
+}
