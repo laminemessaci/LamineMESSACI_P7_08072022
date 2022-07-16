@@ -17,7 +17,7 @@ export function capitalizeFirstChar(str) {
 }
 
 /**
- *
+ ** Keep only letters and remove accents
  * @param {string} str
  * @returns {string}
  */
