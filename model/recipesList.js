@@ -36,15 +36,16 @@ export class RecipesList {
    * @returns {Array.string}
    */
   _sortByName() {
-    return this.recipes.sort((r1, r2) => {
-      const name1 = r1.name.toLowerCase();
-      const name2 = r2.name.toLowerCase();
+    return this.recipes.sort((a, b) => {
+      return a.name.toLowerCase()?.localeCompare(b.name.toLowerCase());
+      // const name1 = r1.name.toLowerCase();
+      // const name2 = r2.name.toLowerCase();
 
-      const [sortedName1, sortedName2] = sortAlphabetically([name1, name2]);
+      // const [sortedName1, sortedName2] = sortAlphabetically([name1, name2]);
 
-      if (sortedName1 === name2) return 1;
-      if (sortedName1 === name1) return -1;
-      return 0;
+      // if (sortedName1 === name2) return 1;
+      // if (sortedName1 === name1) return -1;
+      // return 0;
     });
   }
 
