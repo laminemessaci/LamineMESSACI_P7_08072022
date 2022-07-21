@@ -20,6 +20,5 @@ const rawRecipesList = await getData(URL_DATA);
 const dataManager = new DataManager(rawRecipesList.recipes);
 const recipesList = dataManager.getRecipesList();
 
+// Display RcipesList cards
 new HomePage(recipesList).render();
-
-console.log("data filtred == ", recipesList);
