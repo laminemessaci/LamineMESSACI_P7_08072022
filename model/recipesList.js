@@ -1,4 +1,7 @@
-import { sortAlphabetically } from "../utils/formatString.js";
+import {
+  capitalizeFirstChar,
+  sortAlphabetically,
+} from "../utils/formatString.js";
 
 export class RecipesList {
   /**

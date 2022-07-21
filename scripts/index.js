@@ -3,6 +3,7 @@
 import { URL_DATA } from "../constants/index.js";
 import { AdaptedRecipe } from "../model/adaptedRecipe.js";
 import { RecipesList } from "../model/recipesList.js";
+import HomePage from "./pages/homePage.js";
 import { DataManager } from "./services/dataManager.js";
 import { getData } from "./services/getData.js";
 
@@ -18,5 +19,7 @@ const rawRecipesList = await getData(URL_DATA);
 
 const dataManager = new DataManager(rawRecipesList.recipes);
 const recipesList = dataManager.getRecipesList();
+
+new HomePage(recipesList).render();
 
 console.log("data filtred == ", recipesList);
