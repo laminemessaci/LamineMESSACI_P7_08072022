@@ -1,4 +1,4 @@
-import { BREAKPOINTS, FILTERS } from "../../constants/index.js";
+import { FILTERS } from "../../constants/index.js";
 import { filterListSizer } from "../../utils/resizer.js";
 import { RecipeCard } from "../components/cards.js";
 
@@ -72,9 +72,8 @@ export default class HomePage {
     }
   }
 
-
   /**
-   * 
+   *
    */
   _addOpenFiltersEvents() {
     for (let filter of FILTERS) {

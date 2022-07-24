@@ -33,7 +33,8 @@
 
 .card__img {
   height: 11 * $grid-2;
-
+  width: 30 * $grid-2;
+  object-fit: cover;
   background: $neutral-400;
 }
 

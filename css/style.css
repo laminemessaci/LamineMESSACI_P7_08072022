@@ -1479,6 +1479,8 @@ ul {
 }
 .card__img {
   height: 11rem;
+  width: 30rem;
+  object-fit: cover;
   background: #c7bebe;
 }
 

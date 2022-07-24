@@ -11,4 +11,4 @@ export const BREAKPOINTS = {
   medium: 1200,
 };
 
-export const ITEMS_HEIGHT = 38;
+export const ITEMS_HEIGHT = 39;
