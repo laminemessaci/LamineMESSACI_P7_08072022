@@ -93,7 +93,7 @@ export default class HomePage {
         filterIcon.classList.remove("fa-chevron-up");
         itemsList.classList.add("closed");
 
-        itemsList.style.height = 0;
+        // itemsList.style.height = 0;
       }
     }
   }
@@ -186,6 +186,7 @@ export default class HomePage {
     filterBadgesWrapper.appendChild(badgeDiv);
 
     this._badgesList.push(textContent);
+    // console.log("badges list : ", this._badgesList);
 
     badgeCloseIcon.onclick = (e) => {
       e.stopPropagation();
@@ -205,15 +206,17 @@ export default class HomePage {
         recipesListToDisplay = this._recipesList.search(this._userRequest);
       }
 
-      this._renderFiltersOptions(
-        this.getItemsListsToDisplay(recipesListToDisplay)
-      );
-      this._renderCards(recipesListToDisplay);
+      console.log("recipesListToDisplay", recipesListToDisplay);
 
       this._renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
-      this._renderCards(recipesListToDisplay);
+      this._renderCards(recipesListToDisplay.recipes);
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
+      this._renderCards(recipesListToDisplay.recipes);
     };
   }
 
