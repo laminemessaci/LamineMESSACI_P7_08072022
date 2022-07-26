@@ -6,10 +6,8 @@ $filters-transition-duration: 150ms;
 
 .p-search-bar {
   display: flex;
-
   border-radius: $grid-sm;
   overflow: hidden;
-
   background: $neutral-100;
 
   input {
@@ -259,6 +257,3 @@ $filters-transition-duration: 150ms;
     }
   }
 }
-
-
-

@@ -1,0 +1,46 @@
+/* ====================================
+   INGREDIENT/APPLIANCE/USTENSIL BADGES
+   ==================================== */
+
+.badge {
+  width: max-content;
+  margin: $grid-sm $grid-2 $grid-sm 0;
+  padding: $grid-1 $grid-2;
+  border-radius: $grid-sm;
+
+  color: white;
+
+  cursor: default;
+
+  i {
+    margin-left: $grid-1;
+
+    cursor: pointer;
+
+    transition: color 200ms;
+  }
+
+  &--ingredient {
+    background: $info-500;
+
+    i:hover {
+      color: darken($info-500, 20);
+    }
+  }
+
+  &--appliance {
+    background: $success-500;
+
+    i:hover {
+      color: darken($success-500, 20);
+    }
+  }
+
+  &--ustensil {
+    background: $danger-500;
+
+    i:hover {
+      color: darken($danger-500, 15);
+    }
+  }
+}

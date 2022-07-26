@@ -1,6 +1,8 @@
 import {
   capitalizeFirstChar,
+  removeFrenchWords,
   sortAlphabetically,
+  toNormalForm,
 } from "../utils/formatString.js";
 
 export class RecipesList {
@@ -100,5 +102,37 @@ export class RecipesList {
    * @param {Object} userRequest
    * @returns {RecipesList}
    */
-  search(userRequest) {}
+  search(userRequest) {
+    userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
+
+    const words = userRequest.split(" ");
+    const keywords = removeFrenchWords(words);
+
+    let filteredRecipes = new Set(this.recipes);
+
+    for (let keyword of keywords) {
+      const keywordRecipes = new Set();
+
+      keyword = toNormalForm(keyword);
+
+      for (let recipe of this.recipes) {
+        if (
+          recipe.nameWithoutAccent.includes(keyword) ||
+          recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
+          recipe.applianceNameWithoutAccent.includes(keyword) ||
+          recipe.joinedUstensilsWithoutAccent.includes(keyword) ||
+          recipe.descriptionWithoutAccent.includes(keyword)
+        ) {
+          keywordRecipes.add(recipe);
+        }
+      }
+
+      // intersect keywordRecipes with actual filteredRecipes:
+      filteredRecipes = new Set(
+        [...keywordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+      );
+    }
+
+    return new RecipesList([...filteredRecipes]);
+  }
 }

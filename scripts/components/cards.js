@@ -39,7 +39,6 @@ export class RecipeCard {
       this._cardNumber
     }">
         <div><img class="card__img" src="assets/images/${photo}.jpg" </div>
-
         <div class="card__body">
           <h2 class="card__title">
             <span class="name">${this._recipe.name}</span>

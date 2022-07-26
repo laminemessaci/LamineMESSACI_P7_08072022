@@ -1254,6 +1254,41 @@ ul {
   list-style-type: none;
 }
 
+/* ====================================
+   INGREDIENT/APPLIANCE/USTENSIL BADGES
+   ==================================== */
+.badge {
+  width: max-content;
+  margin: 0.25rem 1rem 0.25rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: default;
+}
+.badge i {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: color 200ms;
+}
+.badge--ingredient {
+  background: #3282f7;
+}
+.badge--ingredient i:hover {
+  color: #0751bc;
+}
+.badge--appliance {
+  background: #68d9a4;
+}
+.badge--appliance i:hover {
+  color: #2caf72;
+}
+.badge--ustensil {
+  background: #ed6454;
+}
+.badge--ustensil i:hover {
+  color: #dd2c17;
+}
+
 /* ===========
    RECIPE CARD
    =========== */

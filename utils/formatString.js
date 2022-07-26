@@ -36,7 +36,8 @@ export function toNormalForm(str) {
  * @returns {Array.string}
  */
 export function removeFrenchWords(words) {
-  const trimmedWords = words.trim();
+  console.log("words :", words);
+  const trimmedWords = words;
   const filteredWords = [];
 
   for (let word of trimmedWords) {

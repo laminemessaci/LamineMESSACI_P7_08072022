@@ -2,14 +2,11 @@
 @import "./utils/mixins";
 @import "./utils/animations";
 
-
-
 @import "base/responsive";
 @import "base/typography";
 @import "base/tags";
 
-
-@import "./components/buttons";
+@import "./components/badges";
 @import "./components/cards";
 
 @import "./layouts/header";

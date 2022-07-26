@@ -1,3 +1,5 @@
+import { toNormalForm } from "../utils/formatString.js";
+
 export class AdaptedRecipe {
   /**
    * @constructs
