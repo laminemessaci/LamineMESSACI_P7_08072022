@@ -59,14 +59,18 @@ export default class HomePage {
    * @param {Array.string} itemsLists
    */
   _renderFiltersOptions(itemsLists) {
-    // console.log("je suis filter options ");
+    console.log("items  ", itemsLists);
+
     for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
 
       let htmlContent = "";
 
       for (let item of itemsLists[filter]) {
-        htmlContent += `<li>${item}</li>`;
+        console.log(this._badgesList);
+        if (item != this._badgesList.filter((i) => i == item)) {
+          htmlContent += `<li>${item}</li>`;
+        }
       }
 
       itemsList.innerHTML = htmlContent;
