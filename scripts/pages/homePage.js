@@ -34,6 +34,7 @@ export default class HomePage {
   }
 
   render() {
+    this.searchWithSearchBar();
     this._renderFiltersOptions(this._filterItems);
     this._renderCards(this._recipesList.recipes);
     this._addOpenFiltersEvents();
@@ -59,7 +60,7 @@ export default class HomePage {
    * @param {Array.string} itemsLists
    */
   _renderFiltersOptions(itemsLists) {
-    console.log("items  ", itemsLists);
+    // console.log("items  ", itemsLists);
 
     for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
@@ -67,7 +68,7 @@ export default class HomePage {
       let htmlContent = "";
 
       for (let item of itemsLists[filter]) {
-        console.log(this._badgesList);
+        // console.log(this._badgesList);
         if (item != this._badgesList.filter((i) => i == item)) {
           htmlContent += `<li>${item}</li>`;
         }
@@ -77,7 +78,7 @@ export default class HomePage {
     }
 
     resizeOpenedFilter();
-    this._addSearchWithFiltersEvents();
+    this.searchWithFilters();
   }
 
   /**
@@ -227,7 +228,7 @@ export default class HomePage {
   /**
    * Refresh ingredients/appliances/ustensils lists when user enter an input in filter or click on an item of the lists.
    */
-  _addSearchWithFiltersEvents() {
+  searchWithFilters() {
     for (let filter of FILTERS) {
       const filterInput = document.getElementById(`${filter}`);
       const itemsList = document.getElementById(`${filter}-list`);
@@ -279,5 +280,43 @@ export default class HomePage {
         };
       }
     }
+  }
+
+  searchWithSearchBar() {
+    const searchBarForm = document.getElementById("search-bar-form");
+    const searchBarInput = document.getElementById("search-bar-input");
+
+    searchBarForm.onclick = (e) => e.preventDefault();
+    searchBarForm.onclick = (e) => e.stopPropagation();
+
+    // Close all others filters
+    searchBarInput.onfocus = () => {
+      this._closeAllOthersFilters();
+    };
+
+    searchBarInput.oninput = (e) => {
+      let recipesListToDisplay;
+
+      if (searchBarInput.value.length >= 3) {
+        recipesListToDisplay = this.getRecipesListToDisplay();
+      } else if (this._badgesList.length > 0) {
+        recipesListToDisplay = this._recipesList.search({
+          userInput: "",
+          joinedBadges: this._userRequest.joinedBadges,
+        });
+      } else {
+        recipesListToDisplay = this._recipesList;
+      }
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
+      );
+      this._renderCards(recipesListToDisplay.recipes);
+    };
+
+    searchBarForm.onsubmit = (e) => {
+      e.preventDefault();
+      searchBarInput.blur();
+    };
   }
 }

@@ -1,5 +1,3 @@
-"use strict";
-
 import { FRENCH_WORDS } from "../data/frenchWords.js";
 
 const TRANSFORM_WORDS = [];
