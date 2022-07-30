@@ -211,7 +211,7 @@ export default class HomePage {
         recipesListToDisplay = this._recipesList.search(this._userRequest);
       }
 
-      console.log("recipesListToDisplay", recipesListToDisplay);
+      // console.log("recipesListToDisplay", recipesListToDisplay);
 
       this._renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)

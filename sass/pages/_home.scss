@@ -140,14 +140,11 @@ $filters-transition-duration: 150ms;
       top: 3.25 * $grid-2;
       left: 0;
       z-index: $z-dropdown;
-
-      height: auto;
+      max-height: 13em;
       width: 100%;
       border-radius: $grid-sm;
       overflow: hidden;
-
       opacity: 1;
-
       transition: opacity $filters-transition-duration;
 
       li {
