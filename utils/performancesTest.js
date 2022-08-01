@@ -1,5 +1,4 @@
 import { URL_DATA } from "../constants/index.js";
-import { RecipesList } from "../model/recipesList.js";
 import { DataManager } from "../scripts/services/dataManager.js";
 import { getData } from "../scripts/services/getData.js";
 
@@ -23,7 +22,7 @@ export const algorithmPerformance = () => {
   const RECIPES_COUNT = 1000;
   const STARTING_TIME = Date.now();
 
-  for (let _ = 0; _ < RECIPES_COUNT; _++) {
+  for (let i = 0; i < RECIPES_COUNT; i++) {
     RESULT_1 = recipesList.search(USER_REQUEST_ONE);
     RESULT_2 = recipesList.search(USER_REQUEST_TOW);
   }
@@ -32,5 +31,7 @@ export const algorithmPerformance = () => {
 
   const DURATION = ENDING_TIME - STARTING_TIME;
 
-  console.log(`${2 * RECIPES_COUNT} recherches réalisées en ${DURATION} ms`);
+  console.log(
+    `\n=== > ${2 * RECIPES_COUNT} recherches réalisées en ${DURATION} ms`
+  );
 };

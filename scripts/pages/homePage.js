@@ -60,7 +60,7 @@ export default class HomePage {
    * @param {Array.string} itemsLists
    */
   _renderFiltersOptions(itemsLists) {
-    // console.log("items  ", itemsLists);
+     console.log("items  ", itemsLists);
 
     for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
@@ -239,7 +239,8 @@ export default class HomePage {
 
         let itemsListsToDisplay = {};
         Object.assign(itemsListsToDisplay, this._filterItems);
-        console.log("items filter====", itemsListsToDisplay);
+        // itemsListsToDisplay = [...this._filterItems];
+       // console.log("items filter====", itemsListsToDisplay);
 
         itemsListsToDisplay[filter] = itemsListsToDisplay[filter].filter(
           (item) =>
