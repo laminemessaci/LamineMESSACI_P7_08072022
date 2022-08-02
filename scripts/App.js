@@ -15,4 +15,4 @@ const recipesList = dataManager.getRecipesList();
 new HomePage(recipesList).render();
 
 // Test algorithm Performances
-algorithmPerformance();
+//algorithmPerformance();
