@@ -12,7 +12,6 @@ const recipesList = dataManager.getRecipesList();
 
 export class Search {
   constructor() {
-    console.debug(recipesList);
     this._recipesList = recipesList;
     this._badgesList = [];
     this._filterItems = {
@@ -20,7 +19,7 @@ export class Search {
       appliance: this._recipesList.sortedAppliances,
       ustensil: this._recipesList.sortedUstensils,
     };
-    this._renderCards(recipesList.recipes);
+    this.renderCards(recipesList.recipes);
   }
 
   /**
@@ -47,7 +46,7 @@ export class Search {
    * @param {string} filter
    * @param {string} textContent
    */
-  _createFilterBadge(filter, textContent) {
+  createFilterBadge(filter, textContent) {
     const filterBadgesWrapper = document.getElementById(
       `${filter}-badges-wrapper`
     );
@@ -87,12 +86,12 @@ export class Search {
 
       // console.log("recipesListToDisplay", recipesListToDisplay);
 
-      this._renderFiltersOptions(
+      this.renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
-      this._renderCards(recipesListToDisplay.recipes);
+      this.renderCards(recipesListToDisplay.recipes);
 
-      this._renderFiltersOptions(
+      this.renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
     };
@@ -103,7 +102,7 @@ export class Search {
    *
    * @param {string} clickedFilter
    */
-  _closeAllOthersFilters(clickedFilter) {
+  closeAllOthersFilters(clickedFilter) {
     for (let filter of FILTERS) {
       if (filter !== clickedFilter) {
         const filterLabel = document.getElementById(`${filter}-filter-label`);
@@ -137,7 +136,7 @@ export class Search {
    * Build Recipes Card list
    * @param {*Object} list
    */
-  _renderCards(list) {
+  renderCards(list) {
     const cardsWrapper = document.getElementById("cards-wrapper");
 
     let htmlContent = "";
@@ -157,7 +156,7 @@ export class Search {
 
     // Close all others filters
     searchBarInput.onfocus = () => {
-      this._closeAllOthersFilters();
+      this.closeAllOthersFilters();
     };
 
     searchBarInput.oninput = (e) => {
@@ -174,10 +173,10 @@ export class Search {
         recipesListToDisplay = this._recipesList;
       }
 
-      this._renderFiltersOptions(
+      this.renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
-      this._renderCards(recipesListToDisplay.recipes);
+      this.renderCards(recipesListToDisplay.recipes);
     };
 
     searchBarForm.onsubmit = (e) => {
@@ -196,19 +195,14 @@ export class Search {
       const itemsLines = document.querySelectorAll(`#${filter}-list li`);
 
       filterInput.oninput = () => {
-        console.log(`User input for ${filter} >`, filterInput.value);
-
         let itemsListsToDisplay = {};
         Object.assign(itemsListsToDisplay, this._filterItems);
-        // itemsListsToDisplay = [...this._filterItems];
-        // console.log("items filter====", itemsListsToDisplay);
-
         itemsListsToDisplay[filter] = itemsListsToDisplay[filter].filter(
           (item) =>
             toNormalForm(item).startsWith(toNormalForm(filterInput.value))
         );
 
-        this._renderFiltersOptions(itemsListsToDisplay);
+        this.renderFiltersOptions(itemsListsToDisplay);
         filterListSizer(filter);
       };
 
@@ -225,17 +219,17 @@ export class Search {
       for (let itemLine of itemsLines) {
         itemLine.onclick = () => {
           if (!this._badgesList.includes(itemLine.textContent)) {
-            this._createFilterBadge(filter, itemLine.textContent);
+            this.createFilterBadge(filter, itemLine.textContent);
 
             const recipesListToDisplay = this._recipesList.search(
               this._userRequest
             );
 
-            this._renderFiltersOptions(
+            this.renderFiltersOptions(
               this.getItemsListsToDisplay(recipesListToDisplay)
             );
 
-            this._renderCards(recipesListToDisplay.recipes);
+            this.renderCards(recipesListToDisplay.recipes);
 
             window.scrollTo(0, 0);
           }
@@ -248,7 +242,7 @@ export class Search {
    *  Build ingredients, appliances and ustensils lists
    * @param {Array.string} itemsLists
    */
-  _renderFiltersOptions(itemsLists) {
+  renderFiltersOptions(itemsLists) {
     console.log("items  ", itemsLists);
 
     for (let filter of FILTERS) {

@@ -38,7 +38,7 @@ export default class HomePage {
 
   render() {
     new Search().searchWithSearchBar();
-    new Search()._renderFiltersOptions(this._filterItems);
+    new Search().renderFiltersOptions(this._filterItems);
     addOpenFiltersEvents();
     this.addAutoSizingFilterListsEvent();
     addCloseAllFiltersEvent();
