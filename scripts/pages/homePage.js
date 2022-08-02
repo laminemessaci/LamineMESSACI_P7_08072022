@@ -4,7 +4,7 @@ import { RecipeCard } from "../components/cards.js";
 import {
   addCloseAllFiltersEvent,
   addOpenFiltersEvents,
-} from "../filterEvents.js";
+} from "../events/filterEvents.js";
 
 export default class HomePage {
   constructor(recipesList) {
@@ -43,6 +43,7 @@ export default class HomePage {
     this.addAutoSizingFilterListsEvent();
     addCloseAllFiltersEvent();
   }
+  
 
   /**
    * Resize opened ingredients/appliances/ustensils list when window is resized.

@@ -1,5 +1,6 @@
 import { FILTERS, URL_DATA } from "../constants/index.js";
 import { RecipeCard } from "../scripts/components/cards.js";
+import { SearchResultMessage } from "../scripts/components/message.js";
 import { DataManager } from "../scripts/services/dataManager.js";
 import { getData } from "../scripts/services/getData.js";
 import { toNormalForm } from "./formatString.js";
@@ -80,8 +81,12 @@ export class Search {
         this._userRequest.joinedBadges === ""
       ) {
         recipesListToDisplay = this._recipesList;
+        const messageAside = document.getElementById("message");
+        messageAside.classList.remove("opened");
       } else {
-        recipesListToDisplay = this._recipesList.search(this._userRequest);
+        recipesListToDisplay = this.getRecipesListToDisplay();
+
+        new SearchResultMessage(recipesListToDisplay);
       }
 
       // console.log("recipesListToDisplay", recipesListToDisplay);
@@ -121,7 +126,7 @@ export class Search {
   }
 
   /**
-   * @param {RecipesList} recipesList
+   * @param {Object.RecipesList} recipesList
    * @returns {Object}
    */
   getItemsListsToDisplay(recipesList) {
@@ -151,7 +156,6 @@ export class Search {
     const searchBarForm = document.getElementById("search-bar-form");
     const searchBarInput = document.getElementById("search-bar-input");
 
-    searchBarForm.onclick = (e) => e.preventDefault();
     searchBarForm.onclick = (e) => e.stopPropagation();
 
     // Close all others filters
@@ -164,13 +168,17 @@ export class Search {
 
       if (searchBarInput.value.length >= 3) {
         recipesListToDisplay = this.getRecipesListToDisplay();
+        new SearchResultMessage(recipesListToDisplay);
       } else if (this._badgesList.length > 0) {
         recipesListToDisplay = this._recipesList.search({
           userInput: "",
           joinedBadges: this._userRequest.joinedBadges,
         });
+        new SearchResultMessage(recipesListToDisplay);
       } else {
         recipesListToDisplay = this._recipesList;
+        const messageAside = document.getElementById("message");
+        messageAside.classList.remove("opened");
       }
 
       this.renderFiltersOptions(
@@ -228,6 +236,7 @@ export class Search {
             this.renderFiltersOptions(
               this.getItemsListsToDisplay(recipesListToDisplay)
             );
+            new SearchResultMessage(recipesListToDisplay);
 
             this.renderCards(recipesListToDisplay.recipes);
 

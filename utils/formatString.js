@@ -50,7 +50,7 @@ export function removeFrenchWords(words) {
 }
 
 /**
- ** Transformq Accented word and Sorts Alphabetically
+ ** Transform Accented word and Sorts Alphabetically
  * @param {Array.string} strings
  * @returns {Array.string}
  */

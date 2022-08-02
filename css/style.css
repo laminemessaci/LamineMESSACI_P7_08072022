@@ -1572,6 +1572,39 @@ ul {
   height: 1.5rem;
 }
 
+/* ======================
+   SEARCH RESULT MESSAGES
+   ====================== */
+.result-message {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  font-size: 1.21rem;
+  transform: scaleY(0);
+  transition: transform 300ms;
+}
+.result-message.opened {
+  height: auto;
+  margin: 1rem 0;
+  transform: scaleY(1);
+}
+.result-message i {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.result-message--info {
+  color: #032250;
+  background: #c4dcff;
+}
+.result-message--warning {
+  color: #4d2a07;
+  background: #fed8b2;
+}
+
 /* =========
    HOME PAGE
    ========= */
@@ -1778,6 +1811,10 @@ ul {
 }
 .p-filters-wrapper .p-filter--ustensil ul li:hover {
   background: #e9432f;
+}
+
+#cards-wrapper {
+  min-height: 20rem;
 }
 
 /*# sourceMappingURL=style.css.map */
