@@ -43,7 +43,6 @@ export default class HomePage {
     this.addAutoSizingFilterListsEvent();
     addCloseAllFiltersEvent();
   }
-  
 
   /**
    * Resize opened ingredients/appliances/ustensils list when window is resized.

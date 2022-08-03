@@ -3,12 +3,14 @@ export class SearchResultMessage {
     this.recipesList = recipesList;
     this.displayMessage(recipesList);
   }
+  
 
   displayMessage(recipes) {
     const messageAside = document.getElementById("message");
     const messageSpan = document.querySelector("#message span");
 
     messageAside.classList.remove("opened");
+  
 
     let message;
     const recipesQuantity = this.recipesList.recipes.length;

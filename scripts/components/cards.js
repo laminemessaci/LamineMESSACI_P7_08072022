@@ -38,7 +38,9 @@ export class RecipeCard {
     return `<article class="card lg4 md6 sm12" data-card-id="${
       this._cardNumber
     }">
-        <div><img class="card__img" src="assets/images/${photo}.jpg" </div>
+        <div><img class="card__img" src="assets/images/${photo}.jpg" alt="${
+      this._recipe.name
+    }"></div> </div>
         <div class="card__body">
           <h2 class="card__title">
             <span class="name">${this._recipe.name}</span>
