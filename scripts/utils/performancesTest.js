@@ -19,7 +19,7 @@ export const algorithmPerformance = () => {
     joinedBadges: "mais Basilic",
   };
 
-  const RECIPES_COUNT = 1000;
+  const RECIPES_COUNT = 2000;
   const STARTING_TIME = Date.now();
 
   for (let i = 0; i < RECIPES_COUNT; i++) {
