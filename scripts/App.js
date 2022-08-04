@@ -1,7 +1,7 @@
 // import { sortAlphabetically, toNormalForm } from "../utils/formatString.js";
 
 import { URL_DATA } from "../constants/index.js";
-import { algorithmPerformance } from "../utils/performancesTest.js";
+import { algorithmPerformance } from "./utils/performancesTest.js";
 import HomePage from "./pages/homePage.js";
 import { DataManager } from "./services/dataManager.js";
 import { getData } from "./services/getData.js";

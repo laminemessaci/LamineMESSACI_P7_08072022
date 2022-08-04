@@ -1,6 +1,6 @@
-import { URL_DATA } from "../constants/index.js";
-import { DataManager } from "../scripts/services/dataManager.js";
-import { getData } from "../scripts/services/getData.js";
+import { URL_DATA } from "../../constants/index.js";
+import { DataManager } from "../services/dataManager.js";
+import { getData } from "../services/getData.js";
 
 const rawRecipesList = await getData(URL_DATA);
 

@@ -1,6 +1,6 @@
-import { resizeOpenedFilter } from "../../utils/resizer.js";
-import { Search } from "../../utils/search.js";
-import { RecipeCard } from "../components/cards.js";
+import { resizeOpenedFilter } from "../utils/resizer.js";
+import { Search } from "../utils/search.js";
+
 import {
   addCloseAllFiltersEvent,
   addOpenFiltersEvents,

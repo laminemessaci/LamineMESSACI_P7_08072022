@@ -1,4 +1,4 @@
-import { BREAKPOINTS, ITEMS_HEIGHT } from "../constants/index.js";
+import { BREAKPOINTS, ITEMS_HEIGHT } from "../../constants/index.js";
 
 /**
  * Display ingredients, appliances or ustensils list on 1, 2 or 3 columns depending of window width.

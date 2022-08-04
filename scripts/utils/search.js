@@ -1,8 +1,8 @@
-import { FILTERS, URL_DATA } from "../constants/index.js";
-import { RecipeCard } from "../scripts/components/cards.js";
-import { SearchResultMessage } from "../scripts/components/message.js";
-import { DataManager } from "../scripts/services/dataManager.js";
-import { getData } from "../scripts/services/getData.js";
+import { FILTERS, URL_DATA } from "../../constants/index.js";
+import { RecipeCard } from "../components/cards.js";
+import { SearchResultMessage } from "../components/message.js";
+import { DataManager } from "../services/dataManager.js";
+import { getData } from "../services/getData.js";
 import { toNormalForm } from "./formatString.js";
 import { filterListSizer, resizeOpenedFilter } from "./resizer.js";
 

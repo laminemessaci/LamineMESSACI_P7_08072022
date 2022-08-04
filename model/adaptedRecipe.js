@@ -1,4 +1,4 @@
-import { toNormalForm } from "../utils/formatString.js";
+import { toNormalForm } from "../scripts/utils/formatString.js";
 
 export class AdaptedRecipe {
   /**

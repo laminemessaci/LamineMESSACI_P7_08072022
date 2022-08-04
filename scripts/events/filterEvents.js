@@ -1,5 +1,5 @@
 import { FILTERS } from "../../constants/index.js";
-import { filterListSizer, resizeOpenedFilter } from "../../utils/resizer.js";
+import { filterListSizer, resizeOpenedFilter } from "../utils/resizer.js";
 
 /**
  * Event for Opening  the list of ingredients, ustensils and appliances

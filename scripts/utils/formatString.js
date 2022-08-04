@@ -1,4 +1,4 @@
-import { FRENCH_WORDS } from "../data/frenchWords.js";
+import { FRENCH_WORDS } from "../../data/frenchWords.js";
 
 const TRANSFORM_WORDS = [];
 

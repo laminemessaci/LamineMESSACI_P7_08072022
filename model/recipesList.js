@@ -3,7 +3,7 @@ import {
   removeFrenchWords,
   sortAlphabetically,
   toNormalForm,
-} from "../utils/formatString.js";
+} from "../scripts/utils/formatString.js";
 
 export class RecipesList {
   /**
