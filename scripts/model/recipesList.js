@@ -102,42 +102,32 @@ export class RecipesList {
 
     let filteredRecipes = new Set(this.recipes);
 
-    for (let keyword of keywords) {
-      const keywordRecipes = new Set();
-
+    keywords.forEach((keyword) => {
+      let keywordRecipes = new Set();
       keyword = toNormalForm(keyword);
 
-      if (words[0].length < 2) {
-        console.log("userRequest input ", words[0].length);
-
-        for (let recipe of this.recipes) {
-          if (
+      keywordRecipes = this.recipes.filter((recipe) => {
+        if (words[0].length < 2) {
+          return (
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
             recipe.applianceNameWithoutAccent.includes(keyword) ||
             recipe.joinedUstensilsWithoutAccent.includes(keyword)
-          ) {
-            keywordRecipes.add(recipe);
-          }
-        }
-      } else {
-        for (let recipe of this.recipes) {
-          if (
+          );
+        } else {
+          return (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
             recipe.applianceNameWithoutAccent.includes(keyword) ||
             recipe.joinedUstensilsWithoutAccent.includes(keyword) ||
             recipe.descriptionWithoutAccent.includes(keyword)
-          ) {
-            keywordRecipes.add(recipe);
-          }
+          );
         }
-      }
+      });
 
-      // intersect keywordRecipes with actual filteredRecipes:
       filteredRecipes = new Set(
         [...keywordRecipes].filter((recipe) => filteredRecipes.has(recipe))
       );
-    }
+    });
 
     return new RecipesList([...filteredRecipes]);
   }

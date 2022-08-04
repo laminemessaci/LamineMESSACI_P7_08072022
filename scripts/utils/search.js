@@ -252,8 +252,6 @@ export class Search {
    * @param {Array.string} itemsLists
    */
   renderFiltersOptions(itemsLists) {
-    console.log("items  ", itemsLists);
-
     for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
 
