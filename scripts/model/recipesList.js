@@ -133,12 +133,6 @@ export class RecipesList {
         }
       }
 
-      for (const keywordRecipe in keywordRecipes) {
-        if (filteredRecipes.has(keywordRecipe)) {
-          keywordRecipes.add(keywordRecipe);
-        }
-      }
-
       // intersect keywordRecipes with actual filteredRecipes:
       filteredRecipes = new Set([...keywordRecipes]);
     }
