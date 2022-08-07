@@ -110,7 +110,7 @@ export class RecipesList {
       if (words[0].length < 2) {
         console.log("userRequest input ", words[0].length);
 
-        for (let recipe of this.recipes) {
+        for (let recipe of filteredRecipes) {
           if (
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
             recipe.applianceNameWithoutAccent.includes(keyword) ||
@@ -120,7 +120,7 @@ export class RecipesList {
           }
         }
       } else {
-        for (let recipe of this.recipes) {
+        for (let recipe of filteredRecipes) {
           if (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
