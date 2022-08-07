@@ -103,24 +103,24 @@ export class RecipesList {
     let filteredRecipes = new Set(this.recipes);
 
     for (let keyword of keywords) {
-      const keywordRecipes = new Set();
+      const recipesHasKeyWord = new Set();
 
       keyword = toNormalForm(keyword);
 
-      if (words[0].length < 2) {
-        console.log("userRequest input ", words[0].length);
+      if (words[0] == "") {
+        console.log("Search bar  ", words[0]);
 
-        for (let recipe of filteredRecipes) {
+        for (let recipe of this.recipes) {
           if (
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
             recipe.applianceNameWithoutAccent.includes(keyword) ||
             recipe.joinedUstensilsWithoutAccent.includes(keyword)
           ) {
-            keywordRecipes.add(recipe);
+            recipesHasKeyWord.add(recipe);
           }
         }
       } else {
-        for (let recipe of filteredRecipes) {
+        for (let recipe of this.recipes) {
           if (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
@@ -128,13 +128,15 @@ export class RecipesList {
             recipe.joinedUstensilsWithoutAccent.includes(keyword) ||
             recipe.descriptionWithoutAccent.includes(keyword)
           ) {
-            keywordRecipes.add(recipe);
+            recipesHasKeyWord.add(recipe);
           }
         }
       }
 
-      // intersect keywordRecipes with actual filteredRecipes:
-      filteredRecipes = new Set([...keywordRecipes]);
+      // intersect recipesHasKeyWord with actual filteredRecipes:
+      filteredRecipes = new Set(
+        [...recipesHasKeyWord].filter((recipe) => filteredRecipes.has(recipe))
+      );
     }
 
     return new RecipesList([...filteredRecipes]);
