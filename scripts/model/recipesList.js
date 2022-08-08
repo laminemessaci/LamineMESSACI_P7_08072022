@@ -89,11 +89,6 @@ export class RecipesList {
     return [...ustensils];
   }
 
-  /**
-   * Search recipes corresponding to the input in search bar and active badges.
-   * @param {Object} userRequest
-   * @returns {RecipesList}
-   */
   search(userRequest) {
     const searchBarInput = userRequest.userInput;
     const searchByTag = userRequest.joinedBadges;
