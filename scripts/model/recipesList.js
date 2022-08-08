@@ -105,7 +105,7 @@ export class RecipesList {
     const keywords = removeFrenchWords(words);
 
     let filteredRecipes = new Set(this.recipes);
-    console.log("key words : ", keywords.length);
+    //  console.log("key words : ", keywords.length);
     keywords.forEach((keyword) => {
       let keywordHasRecipes = new Set();
       keyword = toNormalForm(keyword);
@@ -120,7 +120,7 @@ export class RecipesList {
       keywordHasRecipes = this.recipes.filter((recipe) => {
         // if user input is only searchBar
         if (typeOfSearch == "searchBar" && keywords.length == 1) {
-          console.log("searchBar only ", typeOfSearch);
+          // console.log("searchBar only ", typeOfSearch);
           return (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
@@ -129,7 +129,7 @@ export class RecipesList {
             recipe.descriptionWithoutAccent.includes(keyword)
           );
         } else {
-          console.log("Badges search ");
+          // console.log("Badges search ");
           return (
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
             recipe.applianceNameWithoutAccent.includes(keyword) ||
