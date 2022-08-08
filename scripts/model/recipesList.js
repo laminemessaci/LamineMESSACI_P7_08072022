@@ -137,10 +137,13 @@ export class RecipesList {
         }
       }
 
+      let intersectRecipes = new Set();
+      for (let recipe of recipesHasKeyWord) {
+        if (filteredRecipes.has(recipe)) intersectRecipes.add(recipe);
+      }
+
       // intersect recipesHasKeyWord with actual filteredRecipes:
-      filteredRecipes = new Set(
-        [...recipesHasKeyWord].filter((recipe) => filteredRecipes.has(recipe))
-      );
+      filteredRecipes = new Set([...intersectRecipes]);
     }
 
     return new RecipesList([...filteredRecipes]);
