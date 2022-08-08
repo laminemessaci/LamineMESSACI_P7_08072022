@@ -95,8 +95,8 @@ export class RecipesList {
    * @returns {RecipesList}
    */
   search(userRequest) {
-    // searchBar input only
-    const seachBarInput = userRequest.userInput;
+    const searchBarInput = userRequest.userInput;
+    const searchByTag = userRequest.joinedBadges;
 
     // all types of search
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
@@ -109,31 +109,25 @@ export class RecipesList {
     keywords.forEach((keyword) => {
       let keywordHasRecipes = new Set();
       keyword = toNormalForm(keyword);
-      let typeOfSearch = "";
-
-      if (seachBarInput == "") {
-        typeOfSearch = "badges";
-      } else {
-        typeOfSearch = "searchBar";
-      }
 
       keywordHasRecipes = this.recipes.filter((recipe) => {
         // if user input is only searchBar
-        if (typeOfSearch == "searchBar" && keywords.length == 1) {
-          // console.log("searchBar only ", typeOfSearch);
+        if (searchByTag.length > 0 && searchBarInput == "") {
+          console.log("Search By Tag :  ", searchByTag);
+
+          return (
+            recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
+            recipe.applianceNameWithoutAccent.includes(keyword) ||
+            recipe.joinedUstensilsWithoutAccent.includes(keyword)
+          );
+        } else {
+          console.log(" Search Bar: ", searchBarInput);
           return (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
             recipe.applianceNameWithoutAccent.includes(keyword) ||
             recipe.joinedUstensilsWithoutAccent.includes(keyword) ||
             recipe.descriptionWithoutAccent.includes(keyword)
-          );
-        } else {
-          // console.log("Badges search ");
-          return (
-            recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
-            recipe.applianceNameWithoutAccent.includes(keyword) ||
-            recipe.joinedUstensilsWithoutAccent.includes(keyword)
           );
         }
       });
