@@ -42,6 +42,7 @@ export default class HomePage {
     addOpenFiltersEvents();
     this.addAutoSizingFilterListsEvent();
     addCloseAllFiltersEvent();
+    this.addUpButtonEvent();
   }
 
   /**
@@ -50,6 +51,28 @@ export default class HomePage {
   addAutoSizingFilterListsEvent() {
     window.onresize = () => {
       resizeOpenedFilter();
+    };
+  }
+
+  /**
+   * Make "up-button" appears after some scrolling and move to the top of the page when clicking on this "up-button".
+   */
+  addUpButtonEvent() {
+    const upButton = document.getElementById("up-button");
+    const main = document.querySelector("main");
+
+    window.addEventListener("scroll", () => {
+      const mainRect = main.getBoundingClientRect();
+
+      if (mainRect.top < 0) {
+        upButton.classList.add("displayed");
+      } else {
+        upButton.classList.remove("displayed");
+      }
+    });
+
+    upButton.onclick = () => {
+      window.scroll(0, 0);
     };
   }
 }

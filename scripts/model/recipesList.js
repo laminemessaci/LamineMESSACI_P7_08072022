@@ -97,7 +97,7 @@ export class RecipesList {
   search(userRequest) {
     const searchBarInput = userRequest.userInput;
     const searchByTag = userRequest.joinedBadges;
-    console.log(searchBarInput);
+
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
     const words = userRequest.split(" ");
@@ -111,7 +111,7 @@ export class RecipesList {
       keyword = toNormalForm(keyword);
 
       if (searchByTag.length > 0 && searchBarInput == "") {
-        console.log("Search badges   ", searchByTag);
+        // console.log("Search badges   ", searchByTag);
 
         for (let recipe of this.recipes) {
           if (
@@ -124,7 +124,7 @@ export class RecipesList {
         }
       } else {
         for (let recipe of this.recipes) {
-          console.log("search bar", searchBarInput);
+          // console.log("search bar", searchBarInput);
           if (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||

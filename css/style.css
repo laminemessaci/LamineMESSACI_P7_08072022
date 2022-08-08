@@ -1605,6 +1605,37 @@ ul {
   background: #fed8b2;
 }
 
+#up-button {
+  display: block;
+  position: sticky;
+  bottom: 1rem;
+  z-index: 7000;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0.5rem 0 auto;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0.25rem 0.5rem #353535;
+  outline: none;
+  color: white;
+  font-size: 2.5rem;
+  text-align: right;
+  background: #3282f7;
+  transform: translateY(5rem);
+  transition: background-color 250ms, transform 300ms;
+  cursor: pointer;
+}
+#up-button i {
+  display: block;
+  padding: 0.25rem;
+}
+#up-button:hover {
+  background: #d67512;
+}
+#up-button.displayed {
+  transform: translateY(0);
+}
+
 /* =========
    HOME PAGE
    ========= */
