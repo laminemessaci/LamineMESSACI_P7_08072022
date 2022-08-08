@@ -95,10 +95,6 @@ export class Search {
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
       this.renderCards(recipesListToDisplay.recipes);
-
-      this.renderFiltersOptions(
-        this.getItemsListsToDisplay(recipesListToDisplay)
-      );
     };
   }
 

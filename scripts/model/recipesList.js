@@ -95,25 +95,32 @@ export class RecipesList {
    * @returns {RecipesList}
    */
   search(userRequest) {
+    // searchBar input only
+    const seachBarInput = userRequest.userInput;
+
+    // all types of search
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
     const words = userRequest.split(" ");
     const keywords = removeFrenchWords(words);
 
     let filteredRecipes = new Set(this.recipes);
-
+    console.log("key words : ", keywords.length);
     keywords.forEach((keyword) => {
-      let keywordRecipes = new Set();
+      let keywordHasRecipes = new Set();
       keyword = toNormalForm(keyword);
+      let typeOfSearch = "";
 
-      keywordRecipes = this.recipes.filter((recipe) => {
-        if (words[0].length < 2) {
-          return (
-            recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
-            recipe.applianceNameWithoutAccent.includes(keyword) ||
-            recipe.joinedUstensilsWithoutAccent.includes(keyword)
-          );
-        } else {
+      if (seachBarInput == "") {
+        typeOfSearch = "badges";
+      } else {
+        typeOfSearch = "searchBar";
+      }
+
+      keywordHasRecipes = this.recipes.filter((recipe) => {
+        // if user input is only searchBar
+        if (typeOfSearch == "searchBar" && keywords.length == 1) {
+          console.log("searchBar only ", typeOfSearch);
           return (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
@@ -121,11 +128,18 @@ export class RecipesList {
             recipe.joinedUstensilsWithoutAccent.includes(keyword) ||
             recipe.descriptionWithoutAccent.includes(keyword)
           );
+        } else {
+          console.log("Badges search ");
+          return (
+            recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
+            recipe.applianceNameWithoutAccent.includes(keyword) ||
+            recipe.joinedUstensilsWithoutAccent.includes(keyword)
+          );
         }
       });
 
       filteredRecipes = new Set(
-        [...keywordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+        [...keywordHasRecipes].filter((recipe) => filteredRecipes.has(recipe))
       );
     });
 
