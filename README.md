@@ -1,11 +1,9 @@
 # Les Petits Plats
 
-## Cas d'utilisation
+## 1. Cas d'utilisation
 
-![Use case](./documents/Cas%2Bd%E2%80%99utilisation.pdf)
+![Use Case](./documents/Cas%2Bd%E2%80%99utilisation.pdf)
 
-## Algorigrame
+## 2. Algorigrame
 
 ![Algorigrame](./documents/algorithm.jpg)
-
-
