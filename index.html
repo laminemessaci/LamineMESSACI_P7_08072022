@@ -40,6 +40,13 @@
 
     <main>
 
+        <!-- search result message: -->
+        <aside class="result-message" id="message">
+            <span>Aucun résultat !</span>
+            <i class="far fa-times-circle"></i>
+        </aside>
+
+
         <!-- Search bar: -->
         <form class="p-search-bar" id="search-bar-form">
             <input class="txt-h5" id="search-bar-input" type="text"
@@ -49,11 +56,11 @@
 
         <!-- Badges added dynamically: -->
         <div class="p-badges-wrapper">
-            <div class="p-filter-badges-wrapper" id="ingredient-badges-wrapper">bages ...</div>
+            <div class="p-filter-badges-wrapper" id="ingredient-badges-wrapper"></div>
 
-            <div class="p-filter-badges-wrapper" id="appliance-badges-wrapper"> badges ...</div>
+            <div class="p-filter-badges-wrapper" id="appliance-badges-wrapper"></div>
 
-            <div class="p-filter-badges-wrapper" id="ustensil-badges-wrapper">bagdes ...</div>
+            <div class="p-filter-badges-wrapper" id="ustensil-badges-wrapper"></div>
         </div>
 
         <!-- Filters for advanced search: -->
@@ -87,13 +94,19 @@
         </div>
 
         <!-- Recipe cards added dynamically: -->
-        <div class="row-12 has-gutter-xl" id="cards-wrapper">Result Card here ...</div>
+        <div class="row-12 has-gutter-xl" id="cards-wrapper"></div>
 
 
+
+        <!-- Floating action button: -->
+        <button id="up-button" type="button">
+            <i class="fa fa-arrow-up"></i>
+
+        </button>
     </main>
 
     <!-- Custom JS: -->
-    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/App.js"></script>
 </body>
 
 </html>

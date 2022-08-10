@@ -70,7 +70,7 @@ $iefix: 0.01px;
 
   // MEDIUM SCREENS
   @media (min-width: $small-breakpoint) and (max-width: $medium-breakpoint - 1) {
-     @for $i from 1 through $nb-cols {
+    @for $i from 1 through $nb-cols {
       & > .md#{$i} {
         width: calc((100% / #{$nb-cols}) * #{$i} - #{$iefix});
       }

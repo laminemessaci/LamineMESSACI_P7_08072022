@@ -1,11 +1,15 @@
-import { BREAKPOINTS, FILTERS } from "../../constants/index.js";
-import { filterListSizer } from "../../utils/resizer.js";
-import { RecipeCard } from "../components/cards.js";
+import { resizeOpenedFilter } from "../utils/resizer.js";
+import { Search } from "../utils/search.js";
+
+import {
+  addCloseAllFiltersEvent,
+  addOpenFiltersEvents,
+} from "../events/filterEvents.js";
 
 export default class HomePage {
   constructor(recipesList) {
     this._recipesList = recipesList;
-    this._badgesList = new Array();
+    this._badgesList = [];
     this._filterItems = {
       ingredient: this._recipesList.sortedIngredients,
       appliance: this._recipesList.sortedAppliances,
@@ -13,95 +17,62 @@ export default class HomePage {
     };
   }
 
+  /**
+   * @returns {Object}
+   */
+  get _userRequest() {
+    const searchBarInput = document.getElementById("search-bar-input");
+
+    return {
+      userInput: searchBarInput.value.trim(),
+      joinedBadges: this._badgesList.join(" ").trim(),
+    };
+  }
+
+  /**
+   * @returns {RecipesList}
+   */
+  getRecipesListToDisplay() {
+    return this._recipesList.search(this._userRequest);
+  }
+
   render() {
-    this._renderFiltersOptions(this._filterItems);
-    this._renderCard(this._recipesList.recipes);
-    this._addOpenFiltersEvents();
-  }
-
-  _renderCard(list) {
-    const cardsWrapper = document.getElementById("cards-wrapper");
-    console.log("list :", list);
-
-    let htmlContent = "";
-
-    for (let i = 0; i < list.length; i++) {
-      htmlContent += new RecipeCard(list[i], i).html;
-    }
-
-    cardsWrapper.innerHTML = htmlContent;
+    new Search().searchWithSearchBar();
+    new Search().renderFiltersOptions(this._filterItems);
+    addOpenFiltersEvents();
+    this.addAutoSizingFilterListsEvent();
+    addCloseAllFiltersEvent();
+    this.addUpButtonEvent();
   }
 
   /**
-   *  Build ingredients, appliances and ustensils lists
-   * @param {Array.string} itemsLists
+   * Resize opened ingredients/appliances/ustensils list when window is resized.
    */
-  _renderFiltersOptions(itemsLists) {
-    for (let filter of FILTERS) {
-      const itemsList = document.getElementById(`${filter}-list`);
+  addAutoSizingFilterListsEvent() {
+    window.onresize = () => {
+      resizeOpenedFilter();
+    };
+  }
 
-      let htmlContent = "";
+  /**
+   * Make "up-button" appears after some scrolling and move to the top of the page when clicking on this "up-button".
+   */
+  addUpButtonEvent() {
+    const upButton = document.getElementById("up-button");
+    const main = document.querySelector("main");
 
-      for (let item of itemsLists[filter]) {
-        htmlContent += `<li>${item}</li>`;
+    window.addEventListener("scroll", () => {
+      const mainRect = main.getBoundingClientRect();
+
+      if (mainRect.top < 0) {
+        upButton.classList.add("displayed");
+      } else {
+        upButton.classList.remove("displayed");
       }
+    });
 
-      itemsList.innerHTML = htmlContent;
-    }
-  }
-
-  /**
-   * Manage filters options togglers
-   *
-   * @param {string} clickedFilter
-   */
-  _closeAllFiltersExceptClicked(clickedFilter) {
-    for (let filter of FILTERS) {
-      if (filter !== clickedFilter) {
-        const filterLabel = document.getElementById(`${filter}-filter-label`);
-        const filterIcon = document.getElementById(`${filter}-filter-icon`);
-        const itemsList = document.getElementById(`${filter}-list`);
-
-        filterLabel.classList.remove("clicked");
-        filterIcon.classList.add("fa-chevron-down");
-        filterIcon.classList.remove("fa-chevron-up");
-        itemsList.classList.add("closed");
-
-        itemsList.style.height = 0;
-      }
-    }
-  }
-
-
-  /**
-   * 
-   */
-  _addOpenFiltersEvents() {
-    for (let filter of FILTERS) {
-      const filterLabel = document.getElementById(`${filter}-filter-label`);
-      const filterIcon = document.getElementById(`${filter}-filter-icon`);
-      const filterInput = document.getElementById(`${filter}`);
-      const itemsList = document.getElementById(`${filter}-list`);
-
-      filterLabel.onclick = (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-
-        this._closeAllFiltersExceptClicked(filter);
-
-        filterLabel.classList.toggle("clicked");
-        filterIcon.classList.toggle("fa-chevton-down");
-        filterIcon.classList.toggle("fa-chevron-up");
-        itemsList.classList.toggle("closed");
-
-        filterListSizer(filter);
-
-        filterInput.focus();
-      };
-
-      filterInput.onclick = (e) => {
-        e.stopPropagation();
-      };
-    }
+    upButton.onclick = () => {
+      window.scroll(0, 0);
+    };
   }
 }

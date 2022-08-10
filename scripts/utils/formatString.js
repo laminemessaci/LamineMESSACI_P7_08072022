@@ -1,14 +1,13 @@
-"use strict";
+import { FRENCH_WORDS } from "../../data/frenchWords.js";
 
-import { FRENCH_WORDS } from "../data/frenchWords.js";
-
-const STOP_WORDS = [];
+const TRANSFORM_WORDS = [];
 
 for (let word of FRENCH_WORDS) {
-  STOP_WORDS.push(toNormalForm(word));
+  TRANSFORM_WORDS.push(toNormalForm(word));
 }
 
 /**
+ * *Capitalize First character
  * @param {string} str
  * @returns {string}
  */
@@ -32,17 +31,17 @@ export function toNormalForm(str) {
 }
 
 /**
+ ** Remove French words from request User
  * @param {Array.string} words
  * @returns {Array.string}
  */
 export function removeFrenchWords(words) {
-  const trimmedWords = words.trim();
   const filteredWords = [];
 
-  for (let word of trimmedWords) {
+  for (let word of words) {
     let wordWithoutAccent = toNormalForm(word);
 
-    if (word.length > 1 && !STOP_WORDS.includes(wordWithoutAccent)) {
+    if (word.length > 1 && !TRANSFORM_WORDS.includes(wordWithoutAccent)) {
       filteredWords.push(word);
     }
   }
@@ -51,6 +50,7 @@ export function removeFrenchWords(words) {
 }
 
 /**
+ ** Transform Accented word and Sorts Alphabetically
  * @param {Array.string} strings
  * @returns {Array.string}
  */
@@ -63,8 +63,8 @@ export function sortAlphabetically(strings) {
     nonAccentuatedStrings.push([str, nonAccentuatedStr]);
   }
 
-  nonAccentuatedStrings.sort((arr1, arr2) => {
-    return arr1[1]?.localeCompare(arr2[1]);
+  nonAccentuatedStrings.sort((a, b) => {
+    return a[1]?.localeCompare(b[1]);
   });
 
   const sortedStrings = [];

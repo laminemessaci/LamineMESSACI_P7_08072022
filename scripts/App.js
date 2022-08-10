@@ -1,19 +1,10 @@
 // import { sortAlphabetically, toNormalForm } from "../utils/formatString.js";
 
 import { URL_DATA } from "../constants/index.js";
-import { AdaptedRecipe } from "../model/adaptedRecipe.js";
-import { RecipesList } from "../model/recipesList.js";
+import { algorithmPerformance } from "./utils/performancesTest.js";
 import HomePage from "./pages/homePage.js";
 import { DataManager } from "./services/dataManager.js";
 import { getData } from "./services/getData.js";
-
-// const originalText = "éàçèñ A blabla méléçondre ";
-// const result = toNormalForm(originalText);
-// console.log(result);
-
-// const strings = ["toi", "moi", "loui ", "farida", "naima", "yoco", "aya"];
-
-// console.log("sorted string ", sortAlphabetically(strings));
 
 const rawRecipesList = await getData(URL_DATA);
 
@@ -22,3 +13,6 @@ const recipesList = dataManager.getRecipesList();
 
 // Display RcipesList cards
 new HomePage(recipesList).render();
+
+// Test algorithm Performances
+ algorithmPerformance();

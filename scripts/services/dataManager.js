@@ -1,5 +1,5 @@
-import { AdaptedRecipe } from "../../model/adaptedRecipe.js";
-import { RecipesList } from "../../model/recipesList.js";
+import { AdaptedRecipe } from "../model/adaptedRecipe.js";
+import { RecipesList } from "../model/recipesList.js";
 
 export class DataManager {
   /**
