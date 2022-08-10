@@ -23,6 +23,6 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-![Algorigrame](/documents/algorithm.jpg)
+![Algorigrame](./documents/algorithm.jpg)
 ```
 
