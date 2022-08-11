@@ -2,7 +2,7 @@
 
 ## 1. Cas d'utilisation
 
-![Use Case](./documents/Cas%2Bd%E2%80%99utilisation.pdf)
+[Use Case](./documents/Cas%2Bd%E2%80%99utilisation.pdf)
 
 ## 2. Algorigrame
 
