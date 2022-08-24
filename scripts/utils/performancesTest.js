@@ -11,8 +11,8 @@ export const algorithmPerformance = () => {
   let RESULT_1, RESULT_2;
 
   const USER_REQUEST_ONE = {
-    userInput: "coco",
-    joinedBadges: "Ail",
+    userInput: "tarte",
+    joinedBadges: ["Beurre", "Casserole"],
   };
   const USER_REQUEST_TOW = {
     userInput: "coco",

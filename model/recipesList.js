@@ -108,7 +108,7 @@ export class RecipesList {
       keyword = toNormalForm(keyword);
 
       if (words[0].length < 2) {
-        console.log("userRequest input ", words[0].length);
+        // console.log("userRequest input ", words[0].length);
 
         for (let recipe of this.recipes) {
           if (
