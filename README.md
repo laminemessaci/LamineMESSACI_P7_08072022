@@ -7,3 +7,7 @@
 ## 2. Algorigrame
 
 ![Algorigrame](./documents/algorithm.jpg)
+
+## 3. Fiche d'investigation :
+
+[Investigation file](./documents/investigation.pdf)
