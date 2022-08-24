@@ -113,7 +113,7 @@ export class RecipesList {
       keywordHasRecipes = this.recipes.filter((recipe) => {
         // if user input is only searchBar
         if (searchByTag.length > 0 && searchBarInput == "") {
-          console.log("Search By Tag :  ", searchByTag);
+          // console.log("Search By Tag :  ", searchByTag);
 
           return (
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
@@ -121,7 +121,7 @@ export class RecipesList {
             recipe.joinedUstensilsWithoutAccent.includes(keyword)
           );
         } else {
-          console.log(" Search Bar: ", searchBarInput);
+          // console.log(" Search Bar: ", searchBarInput);
           return (
             recipe.nameWithoutAccent.includes(keyword) ||
             recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
