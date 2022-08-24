@@ -32,6 +32,8 @@ export const algorithmPerformance = () => {
   const DURATION = ENDING_TIME - STARTING_TIME;
 
   console.log(
-    `\n=== > ${2 * RECIPES_COUNT} recherches réalisées en ${DURATION} ms`
+    `\n Fonctionnel Test: ${
+      2 * RECIPES_COUNT
+    } recherches réalisées en ${DURATION} ms`
   );
 };
