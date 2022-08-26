@@ -18,7 +18,7 @@ export function addOpenFiltersEvents() {
       closeAllOthersFilters(filter);
 
       filterLabel.classList.toggle("clicked");
-      filterIcon.classList.toggle("fa-chevton-down");
+      filterIcon.classList.toggle("fa-chevron-down");
       filterIcon.classList.toggle("fa-chevron-up");
       itemsList.classList.toggle("closed");
 

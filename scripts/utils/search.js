@@ -206,8 +206,7 @@ export class Search {
         let itemsListsToDisplay = {};
         Object.assign(itemsListsToDisplay, this._filterItems);
         itemsListsToDisplay[filter] = itemsListsToDisplay[filter].filter(
-          (item) =>
-            toNormalForm(item).startsWith(toNormalForm(filterInput.value))
+          (item) => toNormalForm(item).includes(toNormalForm(filterInput.value))
         );
 
         this.renderFiltersOptions(itemsListsToDisplay);
