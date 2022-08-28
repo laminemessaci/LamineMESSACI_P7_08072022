@@ -7,6 +7,11 @@ const rawRecipesList = await getData(URL_DATA);
 const dataManager = new DataManager(rawRecipesList.recipes);
 const recipesList = dataManager.getRecipesList();
 
+/**
+ * [algorithmPerformance description]
+ *
+ * @return  {[type]}  [return description]
+ */
 export const algorithmPerformance = () => {
   let RESULT_1, RESULT_2;
 

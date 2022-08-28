@@ -14,5 +14,6 @@ const recipesList = dataManager.getRecipesList();
 // Display RcipesList cards
 new HomePage(recipesList).render();
 
+
 // Test algorithm Performances
- algorithmPerformance();
+// algorithmPerformance();

@@ -127,7 +127,7 @@ export class Search {
 
   /**
    * @param {Object.RecipesList} recipesList
-   * @returns {Object}
+   * @returns {Object} of ingredients, appliances and ustensils
    */
   getItemsListsToDisplay(recipesList) {
     return {
@@ -152,6 +152,11 @@ export class Search {
 
     cardsWrapper.innerHTML = htmlContent;
   }
+
+  /**
+   * Search with the searchBar
+   */
+
   searchWithSearchBar() {
     const searchBarForm = document.getElementById("search-bar-form");
     const searchBarInput = document.getElementById("search-bar-input");
@@ -166,6 +171,7 @@ export class Search {
     searchBarInput.oninput = (e) => {
       let recipesListToDisplay;
 
+      // check if the search contains 3 or more letters
       if (searchBarInput.value.length >= 3) {
         recipesListToDisplay = this.getRecipesListToDisplay();
         new SearchResultMessage(recipesListToDisplay);
@@ -187,6 +193,7 @@ export class Search {
       this.renderCards(recipesListToDisplay.recipes);
     };
 
+    //Remove focus from a text field
     searchBarForm.onsubmit = (e) => {
       e.preventDefault();
       searchBarInput.blur();
@@ -213,6 +220,7 @@ export class Search {
         filterListSizer(filter);
       };
 
+      //Remove focus from a text field
       filterInput.onsubmit = () => {
         filterInput.blur();
       };
