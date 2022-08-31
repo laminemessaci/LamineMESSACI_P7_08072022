@@ -11,3 +11,6 @@
 ## 3. Fiche d'investigation :
 
 [Investigation file](./documents/investigation.pdf)
+
+## 3. Rapport test JSBEN.CH :
+![JSBEN.SH RESULT](./documents/jsbensh.png)
