@@ -1,10 +1,8 @@
-import { FRENCH_WORDS } from "../../data/frenchWords.js";
+// const TRANSFORM_WORDS = [];
 
-const TRANSFORM_WORDS = [];
-
-for (let word of FRENCH_WORDS) {
-  TRANSFORM_WORDS.push(toNormalForm(word));
-}
+// for (let word of FRENCH_WORDS) {
+//   TRANSFORM_WORDS.push(toNormalForm(word));
+// }
 
 /**
  * *Capitalize First character
@@ -35,19 +33,19 @@ export function toNormalForm(str) {
  * @param {Array.string} words
  * @returns {Array.string}
  */
-export function removeFrenchWords(words) {
-  const filteredWords = [];
+// export function removeFrenchWords(words) {
+//   const filteredWords = [];
 
-  for (let word of words) {
-    let wordWithoutAccent = toNormalForm(word);
+//   for (let word of words) {
+//     let wordWithoutAccent = toNormalForm(word);
 
-    if (word.length > 1 && !TRANSFORM_WORDS.includes(wordWithoutAccent)) {
-      filteredWords.push(word);
-    }
-  }
+//     if (word.length > 1 && !TRANSFORM_WORDS.includes(wordWithoutAccent)) {
+//       filteredWords.push(word);
+//     }
+//   }
 
-  return filteredWords;
-}
+//   return filteredWords;
+// }
 
 /**
  ** Transform Accented word and Sorts Alphabetically

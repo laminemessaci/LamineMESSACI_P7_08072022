@@ -1,6 +1,5 @@
 import {
   capitalizeFirstChar,
-  removeFrenchWords,
   sortAlphabetically,
   toNormalForm,
 } from "../utils/formatString.js";
@@ -95,8 +94,8 @@ export class RecipesList {
 
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
-    const words = userRequest.split(" ");
-    const keywords = removeFrenchWords(words);
+    const keywords = userRequest.split(" ");
+    // const keywords = removeFrenchWords(words);
 
     let filteredRecipes = new Set(this.recipes);
 
