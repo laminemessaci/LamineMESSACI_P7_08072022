@@ -1,4 +1,12 @@
 # Les Petits Plats
+Recipe Search Filter Site
+
+## Description
+
+This project is a website that allows users to search for recipes based on their dietary preferences using badges or by entering keywords.
+## Screenshots
+https://github.com/laminemessaci/LamineMESSACI_P7_08072022/assets/60298344/6c068dcb-32bb-4788-80ba-26bce95d0e46
+
 
 ## 1. Cas d'utilisation
 
